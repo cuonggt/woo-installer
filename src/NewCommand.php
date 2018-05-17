@@ -24,7 +24,7 @@ class NewCommand extends Command
             ->setName('new')
             ->setDescription('Create a new Wordpress application')
             ->addArgument('name', InputArgument::OPTIONAL)
-            ->addOption('version', null, InputOption::VALUE_NONE, 'Installs the specific version release')
+            ->addOption('release', null, InputOption::VALUE_NONE, 'Installs the specific version release')
             ->addOption('force', null, InputOption::VALUE_NONE, 'Forces install even if the directory already exists');
     }
 
@@ -41,7 +41,9 @@ class NewCommand extends Command
             throw new RuntimeException('The Zip PHP extension is not installed. Please install it and try again.');
         }
 
-        $directory = ($input->getArgument('name')) ? getcwd().'/'.$input->getArgument('name') : getcwd();
+        $appName = $input->getArgument('name') ? : 'wordpress';
+
+        $directory = getcwd().'/'.$appName;
 
         if (! $input->getOption('force')) {
             $this->verifyApplicationDoesntExist($directory);
@@ -119,9 +121,15 @@ class NewCommand extends Command
 
         $archive->open($zipFile);
 
-        $archive->extractTo($directory);
+        $archive->extractTo(getcwd());
 
         $archive->close();
+
+        $sourceDirectory = getcwd().'/wordpress';
+
+        if ($directory != $sourceDirectory) {
+            rename($sourceDirectory, $directory);
+        }
 
         return $this;
     }
@@ -149,6 +157,6 @@ class NewCommand extends Command
      */
     protected function getVersion(InputInterface $input)
     {
-        return $input->getOption('version') ? : 'latest';
+        return $input->getOption('release') ? : 'latest';
     }
 }
