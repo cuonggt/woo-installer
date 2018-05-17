@@ -1,0 +1,25 @@
+{
+    "name": "wopresso/woo-installer",
+    "description": "Wordpress application installer.",
+    "keywords": ["wordpress", "wopresso", "woo"],
+    "license": "MIT",
+    "authors": [
+        {
+            "name": "Giang Thai Cuong",
+            "email": "thaicuong.giang@gmail.com"
+        }
+    ],
+    "autoload": {
+        "psr-4": {
+            "Wopresso\\Woo\\Console\\": "src/"
+        }
+    },
+    "require": {
+        "ext-zip": "*",
+        "guzzlehttp/guzzle": "~6.0",
+        "symfony/console": "~3.0|~4.0"
+    },
+    "bin": [
+        "woo"
+    ]
+}
