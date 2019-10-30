@@ -1,17 +1,17 @@
 {
-    "name": "wopresso/woo-installer",
+    "name": "cuonggt/woo",
     "description": "Wordpress application installer.",
-    "keywords": ["wordpress", "wopresso", "woo"],
+    "keywords": ["wordpress", "wopresso"],
     "license": "MIT",
     "authors": [
         {
-            "name": "Giang Thai Cuong",
+            "name": "Cuong Giang",
             "email": "thaicuong.giang@gmail.com"
         }
     ],
     "autoload": {
         "psr-4": {
-            "Wopresso\\Woo\\Console\\": "src/"
+            "Cuonggt\\Woo\\Console\\": "src/"
         }
     },
     "require": {

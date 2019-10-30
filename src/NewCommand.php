@@ -1,6 +1,6 @@
 <?php
 
-namespace Wopresso\Woo\Console;
+namespace Cuonggt\Woo\Console;
 
 use ZipArchive;
 use RuntimeException;
