@@ -41,7 +41,7 @@ class NewCommand extends Command
             throw new RuntimeException('The Zip PHP extension is not installed. Please install it and try again.');
         }
 
-        $appName = $input->getArgument('name') ? : 'wordpress';
+        $appName = $input->getArgument('name') ?: 'wordpress';
 
         $directory = getcwd().'/'.$appName;
 
@@ -157,6 +157,6 @@ class NewCommand extends Command
      */
     protected function getVersion(InputInterface $input)
     {
-        return $input->getOption('release') ? : 'latest';
+        return $input->getOption('release') ?: 'latest';
     }
 }
